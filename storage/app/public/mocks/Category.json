@@ -1,0 +1,82 @@
+[
+    {
+        "title": "รักษามูลค่า",
+        "description": "Store Of Value",
+        "is_active": true
+    },
+    {
+        "title": "สัญญาอัจฉริยะ",
+        "description": "Smart Contract",
+        "is_active": true
+    },
+    {
+        "title": "DApps",
+        "description": "โปรโตคอลที่ช่วยในการทำธุระกรรมผ่าน Blockchain",
+        "is_active": true
+    },
+    {
+        "title": "DeFi",
+        "description": "Decentralized Finance",
+        "is_active": true
+    },
+    {
+        "title": "Exchange",
+        "description": "ตลาดซื้อขาย",
+        "is_active": true
+    },
+    {
+        "title": "GameFi",
+        "description": "เหรียญ GameFi",
+        "is_active": true
+    },
+    {
+        "title": "Name Service",
+        "description": "ปรโตคอลที่สร้างขึ้นบนเครือข่าย Ethereum โดยมีวัตถุประสงค์เพื่อเปลี่ยน Address",
+        "is_active": true
+    },
+    {
+        "title": "ส่งต่อมูลค่า",
+        "description": "Value Transfer",
+        "is_active": true
+    },
+    {
+        "title": "Oracle",
+        "description": "ผู้คอยป้อนข้อมูลจากโลกแห่งความจริงเข้าสู่บล็อกเชน เพื่อให้ Dapp หรือ DeFi",
+        "is_active": true
+    },
+    {
+        "title": "Stablecoin",
+        "description": "รักษามูลค่าของเหรียญให้มีมูลค่าที่คงที่เทียบเท่ากับสกุลเงินดอลล่าร์สหรัฐ",
+        "is_active": true
+    },
+    {
+        "title": "Meme",
+        "description": "เหรียญที่ถูกสร้างขึ้นสนุก ๆ",
+        "is_active": true
+    },
+    {
+        "title": "Utility Token",
+        "description": "สินทรัพย์ค้ำประกัน",
+        "is_active": true
+    },
+    {
+        "title": "Power Ledger",
+        "description": "แพลตฟอร์มที่ผู้ใช้สามารถซื้อขายพลังงานได้โดยไม่ต้องผ่านตัวกลาง",
+        "is_active": true
+    },
+    {
+        "title": "Scalability",
+        "description": "เป็นโซลูชันแบบนอกลูกโซ่ (Off-chain) เพื่อเพิ่มความสามารถในการปรับขนาด (Scalability) ของ Ethereum และโทเค็นที่เข้ากันได้กับ ERC-20 อื่นๆ",
+        "is_active": true
+    },
+    {
+        "title": "Cross Network",
+        "description": "โครงสร้างพื้นฐานสำหรับการส่ง digital assets ระหว่างบล็อกเชนแต่ละบล็อกเชนได้",
+        "is_active": true
+    },
+    {
+        "title": "Other",
+        "description": "ไม่ระบุ",
+        "is_active": true
+    }
+]

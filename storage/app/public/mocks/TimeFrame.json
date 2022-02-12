@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "value": "1m",
+        "name": "1 นาที",
+        "is_active": true
+    },
+    {
+        "id": 2,
+        "value": "5m",
+        "name": "5 นาที",
+        "is_active": true
+    },
+    {
+        "id": 3,
+        "value": "15m",
+        "name": "15 นาที",
+        "is_active": true
+    },
+    {
+        "id": 4,
+        "value": "30m",
+        "name": "30 นาที",
+        "is_active": true
+    },
+    {
+        "id": 5,
+        "value": "1h",
+        "name": "1 ชั่วโมง",
+        "is_active": true
+    },
+    {
+        "id": 6,
+        "value": "2h",
+        "name": "2 ชั่วโมง",
+        "is_active": true
+    },
+    {
+        "id": 7,
+        "value": "4h",
+        "name": "4 ชั่วโมง",
+        "is_active": true
+    },
+    {
+        "id": 8,
+        "value": "1d",
+        "name": "1 วัน",
+        "is_active": true
+    },
+    {
+        "id": 9,
+        "value": "1W",
+        "name": "1 สัปดาห์",
+        "is_active": true
+    },
+    {
+        "id": 10,
+        "value": "1M",
+        "name": "1 เดือน",
+        "is_active": true
+    }
+]

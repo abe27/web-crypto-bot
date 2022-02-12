@@ -1,0 +1,11 @@
+[{
+        "title": "spot",
+        "description": "ซื้อถูกขายแพง",
+        "is_active": true
+    },
+    {
+        "title": "feature",
+        "description": "คำสั่งซื้อขายล่วงหน้า",
+        "is_active": true
+    }
+]

@@ -1,0 +1,289 @@
+[{
+        "group": "Crypto",
+        "name": "BINANCE",
+        "description": "",
+        "currency": "USD",
+        "image_url": "/storage/exchanges/binance.png",
+        "is_active": true
+    },
+    {
+        "group": "Crypto",
+        "name": "BINANCEUS",
+        "description": "",
+        "currency": "USD",
+        "image_url": "/storage/exchanges/binance.png",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BINGBON",
+        "description": "",
+        "currency": "USD",
+        "image_url": "/storage/exchanges/bingbon.png",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITCOKE",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITFINEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITFLYER",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITHUMB",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITKUB",
+        "description": "",
+        "currency": "THB",
+        "image_url": "/storage/exchanges/bitkub.png",
+        "is_active": true
+    },
+    {
+        "group": "Crypto",
+        "name": "BITPANDAPRO",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITSO",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITSTAMP",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BITTREX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BTCYOU",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "BYBIT",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "CAPITALCOM",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "CEXIO",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "COINBASE",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "COINEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "CURRENCYCOMLEV",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "EXMO",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "FTX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "GEMINI",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "GLOBALPRIME ",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "HITBTC",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "HUOBI",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "KORBIT",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "KRAKEN",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "KUCOIN",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "MERCADO",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "OKCOIN",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "OKEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "PHEMEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "POLONIEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "THEROCKTRADING",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "TIMEX",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    },
+    {
+        "group": "Crypto",
+        "name": "TRADESTATION",
+        "description": "",
+        "currency": "USD",
+        "image_url": "",
+        "is_active": false
+    }
+]

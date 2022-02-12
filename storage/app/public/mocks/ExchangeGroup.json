@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Asset",
+        "description": "ตลาดซื้อขายหุ้น",
+        "is_active": true
+    },
+    {
+        "title": "Forex",
+        "description": "ตลาดการแลกเปลี่ยนสกุลเงิน",
+        "is_active": true
+    },
+    {
+        "title": "Crypto",
+        "description": "ตลาดแลกเป็นสกุลเงินดิจิตอล",
+        "is_active": true
+    }
+]
