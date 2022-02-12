@@ -22,4 +22,9 @@ class Interesting extends Model
         'open_order',
         'is_active',
     ];
+
+    public function get_exchange()
+    {
+        return $this->hasOne(Exchange::class, 'id', 'exchange_id');
+    }
 }

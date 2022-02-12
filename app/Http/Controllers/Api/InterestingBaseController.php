@@ -23,7 +23,7 @@ class InterestingBaseController extends BaseApiController
     public function index()
     {
         LogActivity::addToLog('Api โหลดข้อมูล');
-        $data = Interesting::where('is_active', true)->get();
+        $data = Interesting::with('get_exchange')->where('is_active', true)->get();
         return $this->sendResponse(
             InterestingResource::collection($data),
             'Api Data By user fetched.'

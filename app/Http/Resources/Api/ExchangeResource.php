@@ -3,9 +3,8 @@
 namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Api\ExchangeResource;
 
-class InterestingResource extends JsonResource
+class ExchangeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +16,12 @@ class InterestingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'asset_id' => $this->asset_id,
-            'exchange_id' => $this->get_exchange,
-            'currency_id' => $this->currency_id,
-            'trend' => $this->trend,
-            'last_price' => $this->last_price,
-            'last_percent' => $this->last_percent,
-            'open_order' => $this->open_order,
+            'group_id' => $this->group_id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'currency' => $this->currency,
+            'exchange_type' => $this->exchange_type,
+            'image_url' => $this->image_url,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at->format('d/m/Y H:i:s'),
             'updated_at' => $this->updated_at->format('d/m/Y H:i:s'),
