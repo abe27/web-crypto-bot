@@ -42,16 +42,33 @@ class InterestingBaseController extends BaseApiController
         $exchange = Exchange::where('name', $request->exchange_id)->first();
         $currency = Currency::where('currency', $request->currency_id)->first();
 
-        $db = new Interesting();
-        $db->asset_id = $asset->id;
-        $db->exchange_id = $exchange->id;
-        $db->currency_id = $currency->id;
-        $db->trend = $request->trend;
-        $db->last_price = $request->last_price;
-        $db->last_percent = $request->last_percent;
-        $db->open_order = false;
-        $db->is_active = true;
-        $db->save();
+        $db = Interesting::where('exchange_id', $exchange->id)
+            ->where('asset_id', $asset->id)
+            ->where('currency_id', $currency->id)
+            ->first();
+        if (!$db) {
+            $db = new Interesting();
+            $db->asset_id = $asset->id;
+            $db->exchange_id = $exchange->id;
+            $db->currency_id = $currency->id;
+            $db->trend = $request->trend;
+            $db->last_price = $request->last_price;
+            $db->last_percent = $request->last_percent;
+            $db->open_order = false;
+            $db->is_active = true;
+            $db->save();
+
+        } else {
+            $db->asset_id = $asset->id;
+            $db->exchange_id = $exchange->id;
+            $db->currency_id = $currency->id;
+            $db->trend = $request->trend;
+            $db->last_price = $request->last_price;
+            $db->last_percent = $request->last_percent;
+            $db->open_order = false;
+            $db->is_active = true;
+            $db->save();
+        }
         LogActivity::addToLog('Api สร้างข้อมูล');
         return $this->sendResponse(
             new InterestingResource($db),
@@ -68,7 +85,10 @@ class InterestingBaseController extends BaseApiController
     public function show(Interesting $interesting)
     {
         LogActivity::addToLog('Api ตรวจข้อมูล');
-        return $this->sendResponse(new InterestingResource($interesting),'Api Data show.');
+        return $this->sendResponse(
+            new InterestingResource($interesting),
+            'Api Data show.'
+        );
     }
 
     /**
@@ -78,9 +98,10 @@ class InterestingBaseController extends BaseApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInterestingRequest $request, Interesting $interesting)
-    {
-
+    public function update(
+        UpdateInterestingRequest $request,
+        Interesting $interesting
+    ) {
         $interesting->trend = $request->trend;
         $interesting->last_price = $request->last_price;
         $interesting->last_percent = $request->last_percent;
@@ -104,6 +125,9 @@ class InterestingBaseController extends BaseApiController
     {
         $interesting->delete();
         LogActivity::addToLog('Api ลบข้อมูล');
-        return $this->sendResponse(new InterestingResource($interesting),'Api Data deleted.');
+        return $this->sendResponse(
+            new InterestingResource($interesting),
+            'Api Data deleted.'
+        );
     }
 }
