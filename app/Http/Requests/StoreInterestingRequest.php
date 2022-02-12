@@ -13,7 +13,7 @@ class StoreInterestingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreInterestingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'asset_id' => 'required',
+            'exchange_id' => 'required',
+            'currency_id' => 'required',
+            'trend' => 'required',
+            'last_price' => 'required|numeric',
+            'last_percent' => 'required|numeric',
         ];
     }
 }
