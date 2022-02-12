@@ -23,9 +23,11 @@ class ApiExchangeSeeder extends Seeder
         foreach ($json as $key) {
             $user = User::where('email', $key->user_id)->first();
             $exchange = Exchange::where('name', $key->exchange_id)->first();
+            $this->command->info($key->exchange_id);
             $db = ApiExchange::where('user_id', $user->id)
                 ->where('exchange_id', $exchange->id)
                 ->first();
+
 
             if ($db) {
                 $this->command->info('update data');

@@ -35,10 +35,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/index', [ApiExchangeController::class, 'index'])->name('api-data.index');
         Route::get('/get', [ApiExchangeController::class, 'get'])->name('api-data.get');
         Route::get('/create', [ApiExchangeController::class, 'create'])->name('api-data.create');
-        Route::get('/{apiData}/show', [ApiExchangeController::class, 'show'])->name('api-data.show');
+        Route::get('/{apiExchange}/show', [ApiExchangeController::class, 'show'])->name('api-data.show');
         Route::get('/exchange', [ApiExchangeController::class, 'exchange'])->name('api-data.exchange');
         Route::post('/store', [ApiExchangeController::class, 'store'])->name('api-data.store');
-        Route::delete('/{apiData}/delete', [ApiExchangeController::class, 'destroy'])->name('api-data.delete');
+        Route::delete('/{apiExchange}/delete', [ApiExchangeController::class, 'destroy'])->name('api-data.delete');
     });
 });
 

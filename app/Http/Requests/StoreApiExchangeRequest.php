@@ -13,7 +13,7 @@ class StoreApiExchangeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreApiExchangeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'exchange_id' => 'required',
+            'expire_date' => 'required',
+            'api_key' => 'required|min:10|unique:api_exchanges',
+            'api_secret' => 'required|min:10|unique:api_exchanges',
         ];
     }
 }

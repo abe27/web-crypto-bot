@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([ExchangeSeeder::class,]);
         $this->call([AssetSeeder::class]);
-        $this->call([NotInterestedSeeder::class]);
+        $this->call([NotTradingSeeder::class]);
         $this->call([AdminSeeder::class]);
         $this->call([ApiExchangeSeeder::class]);
     }

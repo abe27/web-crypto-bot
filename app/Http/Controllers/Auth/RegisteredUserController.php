@@ -9,8 +9,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use App\Helpers\LogActivity;
+use App\Mail\VerifyRegisterMail;
+use App\Mail\WaitVerifyAccountMail;
+use Exception;
 
 class RegisteredUserController extends Controller
 {
@@ -46,10 +51,33 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        try {
+            // Send Mail To Admin
+            Mail::to(env('MAIL_TO_ADMIN'))->send(new VerifyRegisterMail($user));
+
+            // Send Mail To user
+            Mail::to($user->email)->send(new WaitVerifyAccountMail($user));
+        } catch (Exception $e) {
+            LogActivity::addToLog($e->getMessage());
+        }
+
         event(new Registered($user));
 
         Auth::login($user);
+        // Create Log
+        LogActivity::addToLog('ลงทะเบียนผู้ใช้งานใหม่');
+        // return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::VERIFY);
+    }
 
-        return redirect(RouteServiceProvider::HOME);
+    /**Add Verify Account By Dev. */
+    /**
+     * Display the registration view.
+     *
+     * @return \Inertia\Response
+     */
+    public function verify()
+    {
+        return Inertia::render('Auth/VerifyAccount');
     }
 }

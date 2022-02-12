@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Interesting;
-use App\Http\Requests\StoreInterestingRequest;
-use App\Http\Requests\UpdateInterestingRequest;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class InterestingController extends Controller
+class FollowUpController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     /**
      * Display a listing of the resource.
      *
@@ -17,19 +20,19 @@ class InterestingController extends Controller
     public function index()
     {
         $data = [
-            'title' => "รายการที่น่าสนใจ",
-            'description' => "รายการ Asset ที่น่าเข้าเทรด",
+            'title' => "ติดตามผลการเทรด",
+            'description' => "ติดตามผลการเทรดด้วยระบบอัตโนมัติ",
             'breadcrumbs' => [
                 ['title' => 'หน้าแรก', 'url' => 'dashboard', 'active' => false],
                 [
-                    'title' => 'รายการที่น่าสนใจ',
-                    'url' => 'interesting',
+                    'title' => 'ติดตามผลการเทรด',
+                    'url' => 'follow',
                     'active' => true,
                 ],
             ],
             'on_date' => (new \DateTime())->format('d M Y H:i:s')
         ];
-        return Inertia::render('Interesting')->with($data);
+        return Inertia::render('Follow')->with($data);
     }
 
     /**
@@ -45,10 +48,10 @@ class InterestingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreInterestingRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInterestingRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -56,10 +59,10 @@ class InterestingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Interesting  $interesting
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Interesting $interesting)
+    public function show($id)
     {
         //
     }
@@ -67,10 +70,10 @@ class InterestingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Interesting  $interesting
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Interesting $interesting)
+    public function edit($id)
     {
         //
     }
@@ -78,11 +81,11 @@ class InterestingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateInterestingRequest  $request
-     * @param  \App\Models\Interesting  $interesting
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInterestingRequest $request, Interesting $interesting)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -90,10 +93,10 @@ class InterestingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Interesting  $interesting
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Interesting $interesting)
+    public function destroy($id)
     {
         //
     }
