@@ -27,7 +27,7 @@ Route::get('/', function () {
     //     'laravelVersion' => Application::VERSION,
     //     'phpVersion' => PHP_VERSION,
     // ]);
-    return redirect('/dashboard');
+    return redirect('dashboard');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
