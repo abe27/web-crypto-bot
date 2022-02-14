@@ -6,7 +6,23 @@ const classNames = (...classes) => classes.filter(Boolean).join(' ')
 const Pagination = ({ data, handleClick = false }) => {
 
   const checkButton = (label) => {
-    if (label === 'Next')
+    if (label === 'Next &raquo;') {
+      return (
+        <button key={x} className="btn btn-sm">
+          <ArrowRightIcon />
+        </button>
+      )
+    }
+
+    if (label === '&laquo; Previous') {
+      return (
+        <button key={x} className="btn btn-sm">
+          <ArrowLeftIcon />
+        </button>
+      )
+    }
+
+    return <></>
   }
 
   if (data) {
