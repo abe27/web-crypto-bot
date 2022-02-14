@@ -3,15 +3,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
 const classNames = (...classes) => classes.filter(Boolean).join(' ')
 
-const CheckPage = (x, index) => {
-  if (x.url) {
+const Pagination = ({ data, handleClick = false }) => {
 
+  const checkButton = (label) => {
+    if (label === 'Next')
   }
 
-  return <></>
-}
-
-const Pagination = ({ data, handleClick = false }) => {
   if (data) {
     return data.map((i, index) => (
       <button
