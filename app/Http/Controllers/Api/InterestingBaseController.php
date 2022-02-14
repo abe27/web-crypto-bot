@@ -8,6 +8,7 @@ use App\Http\Requests\StoreInterestingRequest;
 use App\Http\Requests\UpdateInterestingRequest;
 use App\Http\Resources\Api\InterestingResource;
 use App\Models\Asset;
+use App\Models\Category;
 use App\Models\Currency;
 use App\Models\Exchange;
 use App\Models\Interesting;
@@ -39,6 +40,20 @@ class InterestingBaseController extends BaseApiController
     public function store(StoreInterestingRequest $request)
     {
         $asset = Asset::where('symbol', $request->asset_id)->first();
+        if (!$asset) {
+            $category = Category::where('title', 'Other')->first();
+            $asset = new Asset();
+            $asset->category_id = $category->id;
+            $asset->symbol = $request->asset_id;
+            $asset->description = 'New Coin';
+            $asset->image_url = '-';
+            $asset->is_active = true;
+            $asset->save();
+        } else {
+            $asset->symbol = $request->asset_id;
+            $asset->save();
+        }
+
         $exchange = Exchange::where('name', $request->exchange_id)->first();
         $currency = Currency::where('currency', $request->currency_id)->first();
 
