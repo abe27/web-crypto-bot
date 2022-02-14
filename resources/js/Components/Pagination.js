@@ -27,13 +27,15 @@ const Pagination = ({ data, handleClick = false }) => {
 
   if (data) {
     return data.map((i, index) => (
-      <button
+      <>
+        <button
         onClick={() => handleClick(i)}
         key={index}
         className={classNames(i.active ? 'btn-disabled' : '', 'btn btn-sm')}
       >
         {i.label}
       </button>
+      </>
     ))
   }
 
