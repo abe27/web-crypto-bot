@@ -35,7 +35,7 @@ class InterestingController extends Controller
 
     public function get()
     {
-        $data = Interesting::paginate(100);
+        $data = Interesting::paginate();
         return InterestingResource::collection($data);
     }
 

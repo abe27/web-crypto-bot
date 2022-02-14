@@ -10,17 +10,23 @@ import {
 import { InterestingTableView } from '@/Components/Interestings'
 
 const Interesting = (props) => {
+  const [linkGet, setLinkGet] = useState(route('interesting.get'))
   const [interestData, setInterestData] = useState(null)
   const [isLoadingRefesh, setLoadingRefresh] = useState(false)
 
   const getInteresting = async () => {
     setLoadingRefresh(true)
     setInterestData(null)
-
-    const data = await axios.get(route('interesting.get'));
+    const data = await axios.get(linkGet);
     const obj = await data.data;
     setInterestData(obj);
     setLoadingRefresh(false)
+  }
+
+  const onNextPage = (i) => {
+    console.dir(i)
+    // setLinkGet(i)
+    // getInteresting();
   }
 
   useEffect(() => {
@@ -52,7 +58,7 @@ const Interesting = (props) => {
           <div className="container mx-auto">
             <div className="w-full rounded">
               {!interestData && <Skeletons />}
-              {interestData && <InterestingTableView interesting={interestData} />}
+              {interestData && <InterestingTableView interesting={interestData} clickNextPage={onNextPage} />}
             </div>
           </div>
         </div>

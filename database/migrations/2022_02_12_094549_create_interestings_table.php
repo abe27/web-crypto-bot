@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('asset_id', 21);
             $table->string('exchange_id', 21);
             $table->string('currency_id', 21);
-            $table->enum('trend', ['-', 'LONG', 'SHORT', 'STRONG_LONG', 'STRONG_SHORT', 'NEUTRAL'])->nullable()->default('-');
+            $table->enum('trend', ['-', 'LONG', 'SHORT', 'STRONG_LONG', 'STRONG_SHORT', 'NEUTRAL', 'INTEREST'])->nullable()->default('-');
             $table->decimal('last_price', 65, 2)->nullable()->default(0);
             $table->decimal('last_percent', 65, 2)->nullable()->default(0);
             $table->boolean('open_order')->nullable()->default(false);

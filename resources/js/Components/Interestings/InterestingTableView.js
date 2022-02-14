@@ -13,16 +13,46 @@ import {
   Center,
   Square,
 } from '@chakra-ui/react'
-import { ButtonIconReload } from '@/Components'
+import { ButtonIconReload, Pagination } from '@/Components'
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
-const TableView = ({ interesting }) => {
-  console.dir(interesting)
-  const handleClick = (e) => {
-    console.dir(e)
+const capitalize = (s) => s[0].toUpperCase() + s.slice(1).toLowerCase()
+
+const classNames = (...classes) => classes.filter(Boolean).join(' ')
+
+const ShowBtnPaginations = (i, x) => {
+  if (i.url) {
+    if (i.label === 'Next &raquo;') {
+      return (
+        <button key={x} className="btn btn-sm">
+          <ArrowRightIcon />
+        </button>
+      )
+    }
+
+    if (i.label === '&laquo; Previous') {
+      return (
+        <button key={x} className="btn btn-sm">
+          <ArrowLeftIcon />
+        </button>
+      )
+    }
+    return (
+      <button
+        key={x}
+        className={classNames(i.active ? 'btn-disabled' : '', 'btn btn-sm')}
+      >
+        {i.label}
+      </button>
+    )
   }
 
-  const capitalize = (s) => s[0].toUpperCase() + (s.slice(1)).toLowerCase();
+  return
+}
 
+const TableView = ({ interesting, clickNextPage = false }) => {
+  console.dir(interesting)
+  const handleClick = (e) => console.dir(e)
   return (
     <>
       {interesting.data && (
@@ -47,10 +77,7 @@ const TableView = ({ interesting }) => {
                 <Td>
                   <Flex>
                     <Center>
-                      <Avatar
-                        size="xs"
-                        src={i.exchange_id.image_url}
-                      />
+                      <Avatar size="xs" src={i.exchange_id.image_url} />
                     </Center>
                     <Square ml="2">
                       <Text size="md" fontWeight="bold">
@@ -65,7 +92,7 @@ const TableView = ({ interesting }) => {
                       <AvatarGroup size="xs" max={2}>
                         <Avatar
                           name={i.asset_id.symbol}
-                          src={`/storage/crypto/${(i.asset_id.symbol).toLowerCase()}.png`}
+                          src={`/storage/crypto/${i.asset_id.symbol.toLowerCase()}.png`}
                         />
                         <Avatar
                           size="xs"
@@ -76,13 +103,13 @@ const TableView = ({ interesting }) => {
                     </Center>
                     <Square ml="2">
                       <Text size="md" fontWeight="bold">
-                      {i.asset_id.symbol}/{i.currency_id.currency}
+                        {i.asset_id.symbol}/{i.currency_id.currency}
                       </Text>
                     </Square>
                   </Flex>
                 </Td>
-                <Td isNumeric>{i.last_price}</Td>
-                <Td isNumeric>{i.last_percent}%</Td>
+                <Td isNumeric>{i.last_price.toLocaleString()}</Td>
+                <Td isNumeric>{i.last_percent.toLocaleString()}%</Td>
                 <Td>{i.updated_at}</Td>
                 <Td>
                   <ButtonIconReload handleClick={handleClick} />
@@ -105,16 +132,18 @@ const TableView = ({ interesting }) => {
         </Table>
       )}
 
-      <div className="mx-auto p-6">
-        <div className="btn-group">
-          <button className="btn btn-sm">1</button>
-          <button className="btn btn-sm">2</button>
-          <button className="btn btn-sm">3</button>
-          <button className="btn btn-sm btn-disabled">...</button>
-          <button className="btn btn-sm">99</button>
-          <button className="btn btn-sm">100</button>
+      {interesting.meta.last_page != interesting.meta.current_page && (
+        <div className="flex max-w-7xl mx-auto p-6 justify-center">
+          <div className="btn-group">
+            {interesting.meta.links && (
+              <Pagination
+                data={interesting.meta.links}
+                handleClick={clickNextPage}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

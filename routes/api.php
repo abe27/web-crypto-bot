@@ -40,9 +40,10 @@ Route::middleware('auth:sanctum')->group(function () {
             ApiExchangeBaseController::class,
             'show',
         ])->name('api.apidata.show');
-        Route::post('/create', [ApiExchangeBaseController::class, 'store'])->name(
-            'api.apidata.create'
-        );
+        Route::post('/create', [
+            ApiExchangeBaseController::class,
+            'store',
+        ])->name('api.apidata.create');
         Route::put('/{apidata}/update', [
             ApiExchangeBaseController::class,
             'update',
@@ -77,5 +78,9 @@ Route::middleware('auth:sanctum')->group(function () {
             InterestingBaseController::class,
             'destroy',
         ])->name('api.interesting.destroy');
+    });
+
+    Route::prefix('/order')->group(function () {
+        Route::get('/get', [OrderBaseController::class, 'index'])->name('api.order.index');
     });
 });
