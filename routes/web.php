@@ -42,13 +42,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('/interesting')->group(function () {
+        Route::get('/index', [InterestingController::class, 'index'])->name('interesting.index');
+        Route::get('/get', [InterestingController::class, 'get'])->name('interesting.get');
+    });
+});
+
 Route::get('/dashboard', [DashBoardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
-Route::get('/interesting', [InterestingController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('interesting');
 
 Route::get('/follow-up', [FollowUpController::class, 'index'])
     ->middleware(['auth', 'verified'])

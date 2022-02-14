@@ -1,10 +1,10 @@
 [{
     "currency": "THB",
     "description": "Thai Bath",
-    "flag_url": ""
+    "flag_url": "/storage/currency/thai-bath.png"
 },
 {
     "currency": "USD",
     "description": "US Dollar",
-    "flag_url": ""
+    "flag_url": "/storage/currency/us-dollar.png"
 }]

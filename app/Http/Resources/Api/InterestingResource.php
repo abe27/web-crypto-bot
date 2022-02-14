@@ -17,9 +17,9 @@ class InterestingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'asset_id' => $this->asset_id,
+            'asset_id' => $this->get_asset,
             'exchange_id' => $this->get_exchange,
-            'currency_id' => $this->currency_id,
+            'currency_id' => $this->get_currency,
             'trend' => $this->trend,
             'last_price' => $this->last_price,
             'last_percent' => $this->last_percent,

@@ -13,55 +13,14 @@ const Interesting = (props) => {
   const [interestData, setInterestData] = useState(null)
   const [isLoadingRefesh, setLoadingRefresh] = useState(false)
 
-  const getInteresting = () => {
+  const getInteresting = async () => {
     setLoadingRefresh(true)
     setInterestData(null)
 
-    const interest = [
-      {
-        asset_id: {
-          category_id: {
-            title: '',
-            description: '',
-            is_active: true,
-          },
-          symbol: '',
-          description: '',
-          image_url: '',
-          is_active: true,
-        },
-        exchange_id: {
-          group_id: {
-            title: '',
-            description: '',
-            is_active: '',
-          },
-          name: '',
-          description: '',
-          currency: '',
-          exchange_type: '',
-          image_url: '',
-          is_active: true,
-        },
-        currency_id: {
-          currency: '',
-          description: '',
-          flag_url: '',
-          is_active: true,
-        },
-        trend: '',
-        last_price: '',
-        last_percent: '',
-        open_order: '',
-        is_active: '',
-      },
-    ]
-
-    setTimeout(() => {
-      setInterestData(interest)
-      setLoadingRefresh(false)
-      console.dir('getInteresting')
-    }, 3000)
+    const data = await axios.get(route('interesting.get'));
+    const obj = await data.data;
+    setInterestData(obj);
+    setLoadingRefresh(false)
   }
 
   useEffect(() => {

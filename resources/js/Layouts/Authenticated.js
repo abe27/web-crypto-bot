@@ -10,7 +10,7 @@ const user = {
 }
 const navigation = [
   { name: 'หน้าแรก', href: route('dashboard'), ref: 'dashboard' },
-  { name: 'รายการที่น่าสนใจ', href: route('interesting'), ref: 'interesting' },
+  { name: 'รายการที่น่าสนใจ', href: route('interesting.index'), ref: 'interesting.index' },
   { name: 'ติดตามผล', href: route('follow'), ref: 'follow' },
   {
     name: 'จัดการ API ของฉัน',

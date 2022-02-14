@@ -23,8 +23,18 @@ class Interesting extends Model
         'is_active',
     ];
 
+    public function get_asset()
+    {
+        return $this->hasOne(Asset::class, 'id', 'asset_id');
+    }
+
     public function get_exchange()
     {
         return $this->hasOne(Exchange::class, 'id', 'exchange_id');
+    }
+
+    public function get_currency()
+    {
+        return $this->hasOne(Currency::class, 'id', 'currency_id');
     }
 }

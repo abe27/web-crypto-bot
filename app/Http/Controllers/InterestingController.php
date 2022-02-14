@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Interesting;
 use App\Http\Requests\StoreInterestingRequest;
 use App\Http\Requests\UpdateInterestingRequest;
+use App\Http\Resources\Api\InterestingResource;
 use Inertia\Inertia;
 
 class InterestingController extends Controller
@@ -23,13 +24,19 @@ class InterestingController extends Controller
                 ['title' => 'หน้าแรก', 'url' => 'dashboard', 'active' => false],
                 [
                     'title' => 'รายการที่น่าสนใจ',
-                    'url' => 'interesting',
+                    'url' => 'interesting.index',
                     'active' => true,
                 ],
             ],
             'on_date' => (new \DateTime())->format('d M Y H:i:s')
         ];
         return Inertia::render('Interesting')->with($data);
+    }
+
+    public function get()
+    {
+        $data = Interesting::paginate(100);
+        return InterestingResource::collection($data);
     }
 
     /**
