@@ -16,7 +16,7 @@ class ExchangeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'group_id' => $this->group_id,
+            'group_id' => $this->get_exchange_group,
             'name' => $this->name,
             'description' => $this->description,
             'currency' => $this->currency,
