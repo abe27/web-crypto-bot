@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\LogActivity;
 use App\Http\Controllers\Api\BaseApiController;
-use App\Http\Requests\StoreInterestingRequest;
-use App\Http\Requests\UpdateInterestingRequest;
 use App\Http\Resources\Api\InterestingResource;
 use App\Models\Asset;
 use App\Models\Category;
@@ -13,6 +11,7 @@ use App\Models\Currency;
 use App\Models\Exchange;
 use App\Models\Interesting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InterestingBaseController extends BaseApiController
 {
@@ -37,8 +36,21 @@ class InterestingBaseController extends BaseApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInterestingRequest $request)
+    public function store(Request $request)
     {
+        $v = Validator::make($request->all(), [
+            'asset_id' => 'required',
+            'exchange_id' => 'required',
+            'currency_id' => 'required',
+            'trend' => 'required',
+            'last_price' => 'required',
+            'last_percent' => 'required',
+        ]);
+
+        if ($v->fails()) {
+            return $v->errors();
+        }
+
         $asset = Asset::where('symbol', $request->asset_id)->first();
         if (!$asset) {
             $category = Category::where('title', 'Other')->first();
@@ -61,6 +73,7 @@ class InterestingBaseController extends BaseApiController
             ->where('asset_id', $asset->id)
             ->where('currency_id', $currency->id)
             ->first();
+
         if (!$db) {
             $db = new Interesting();
             $db->asset_id = $asset->id;

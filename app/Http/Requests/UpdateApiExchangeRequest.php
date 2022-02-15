@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOrderRequest extends FormRequest
+class UpdateApiExchangeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,7 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'currency' => 'required|string',
-            'interest' => 'required|string',
-            'order_type' => 'required|string',
-            'orderno' => 'required|string',
-            'price' => 'required|numeric',
-            'total_coin' => 'required|numeric',
-            'type' => 'required|string',
-            'status' => 'required|string',
+            //
         ];
     }
 }

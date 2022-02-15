@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
         $user = new User();
         $user->name = 'Crypto Bot';
         $user->email = 'krumii.it@gmail.com';
-        $user->password = Hash::make('P@rz1v@l');
+        $user->password = Hash::make('1q2w3e4r5t6y');
         $user->is_verified = true;
         $user->save();
 
