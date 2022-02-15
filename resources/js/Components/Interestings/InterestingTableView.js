@@ -12,6 +12,7 @@ import {
   Text,
   Center,
   Square,
+  Tag,
 } from '@chakra-ui/react'
 import { ButtonIconReload } from '@/Components'
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
@@ -20,15 +21,30 @@ const capitalize = (s) => s[0].toUpperCase() + s.slice(1).toLowerCase()
 
 const classNames = (...classes) => classes.filter(Boolean).join(' ')
 
+const numberWithCommas = (x) => parseFloat(x).toLocaleString()
+
+const checkBullOrBear = (str) => {
+  if (str === 'INTEREST') {
+    return (
+      <Tag size="sm" colorScheme="green" variant="solid">
+        {str}
+      </Tag>
+    )
+  }
+
+  return (
+    <Tag size="sm" colorScheme="red">
+      {str}
+    </Tag>
+  )
+}
+
 const ButtonPagination = ({ i, handleClick }) => {
   // console.log(`url => ${i.url}`)
   if (i.url) {
     if (i.label === 'Next &raquo;') {
       return (
-        <button
-          className="btn btn-sm"
-          onClick={() => handleClick(i.url)}
-        >
+        <button className="btn btn-sm" onClick={() => handleClick(i.url)}>
           <ArrowRightIcon />
         </button>
       )
@@ -36,10 +52,7 @@ const ButtonPagination = ({ i, handleClick }) => {
 
     if (i.label === '&laquo; Previous') {
       return (
-        <button
-          className="btn btn-sm"
-          onClick={() => handleClick(i.url)}
-        >
+        <button className="btn btn-sm" onClick={() => handleClick(i.url)}>
           <ArrowLeftIcon />
         </button>
       )
@@ -59,15 +72,15 @@ const ButtonPagination = ({ i, handleClick }) => {
 
 const Pagination = ({ data, handleClick }) => {
   if (data) {
-    return data.map(i => <ButtonPagination key={i.label} i={i} handleClick={handleClick} />)
+    return data.map((i) => (
+      <ButtonPagination key={i.label} i={i} handleClick={handleClick} />
+    ))
   }
 
   return <></>
 }
 
-
 const TableView = ({ interesting, clickNextPage }) => {
-  // console.dir(interesting.meta)
   const handleClick = (e) => console.dir(e)
   const pageTo = (e) => clickNextPage(e)
   return (
@@ -77,11 +90,11 @@ const TableView = ({ interesting, clickNextPage }) => {
           <Thead>
             <Tr>
               <Th>ลำดับ</Th>
-              <Th>ประเภท</Th>
               <Th>สถาบันแลกเปลี่ยน</Th>
               <Th>สินทรัพย์</Th>
               <Th isNumeric>ราคาปัจจุบัน</Th>
               <Th isNumeric>อัตราการเปลี่ยนแปลง</Th>
+              <Th>สถานะ</Th>
               <Th>อัพเดทล่าสุดเมื่อ</Th>
               <Th></Th>
             </Tr>
@@ -90,7 +103,6 @@ const TableView = ({ interesting, clickNextPage }) => {
             {interesting.data.map((i, x) => (
               <Tr key={i.id}>
                 <Td>{x + 1}</Td>
-                <Td>Crypto</Td>
                 <Td>
                   <Flex>
                     <Center>
@@ -125,8 +137,9 @@ const TableView = ({ interesting, clickNextPage }) => {
                     </Square>
                   </Flex>
                 </Td>
-                <Td isNumeric>{i.last_price.toLocaleString()}</Td>
+                <Td isNumeric>{numberWithCommas(i.last_price)}</Td>
                 <Td isNumeric>{i.last_percent.toLocaleString()}%</Td>
+                <Td>{checkBullOrBear(i.trend)}</Td>
                 <Td>{i.updated_at}</Td>
                 <Td>
                   <ButtonIconReload handleClick={handleClick} />
@@ -137,11 +150,11 @@ const TableView = ({ interesting, clickNextPage }) => {
           <Tfoot>
             <Tr>
               <Th>ลำดับ</Th>
-              <Th>ประเภท</Th>
               <Th>สถาบันแลกเปลี่ยน</Th>
               <Th>สินทรัพย์</Th>
               <Th isNumeric>ราคาปัจจุบัน</Th>
               <Th isNumeric>อัตราการเปลี่ยนแปลง</Th>
+              <Th>สถานะ</Th>
               <Th>อัพเดทล่าสุดเมื่อ</Th>
               <Th></Th>
             </Tr>
@@ -153,10 +166,7 @@ const TableView = ({ interesting, clickNextPage }) => {
         <div className="flex max-w-7xl mx-auto p-6 justify-center">
           <div className="btn-group">
             {interesting.meta.links && (
-              <Pagination
-                data={interesting.meta.links}
-                handleClick={pageTo}
-              />
+              <Pagination data={interesting.meta.links} handleClick={pageTo} />
             )}
           </div>
         </div>

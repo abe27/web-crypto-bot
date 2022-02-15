@@ -18,8 +18,8 @@ class InterestingController extends Controller
     public function index()
     {
         $data = [
-            'title' => "รายการที่น่าสนใจ",
-            'description' => "รายการ Asset ที่น่าเข้าเทรด",
+            'title' => 'รายการที่น่าสนใจ',
+            'description' => 'รายการ Asset ที่น่าเข้าเทรด',
             'breadcrumbs' => [
                 ['title' => 'หน้าแรก', 'url' => 'dashboard', 'active' => false],
                 [
@@ -28,14 +28,16 @@ class InterestingController extends Controller
                     'active' => true,
                 ],
             ],
-            'on_date' => (new \DateTime())->format('d M Y H:i:s')
+            'on_date' => (new \DateTime())->format('d M Y H:i:s'),
         ];
         return Inertia::render('Interesting')->with($data);
     }
 
     public function get()
     {
-        $data = Interesting::paginate();
+        $data = Interesting::orderBy('trend', 'desc')
+            ->orderBy('last_percent', 'asc')
+            ->paginate();
         return InterestingResource::collection($data);
     }
 
@@ -89,8 +91,10 @@ class InterestingController extends Controller
      * @param  \App\Models\Interesting  $interesting
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInterestingRequest $request, Interesting $interesting)
-    {
+    public function update(
+        UpdateInterestingRequest $request,
+        Interesting $interesting
+    ) {
         //
     }
 
