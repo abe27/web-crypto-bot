@@ -14,23 +14,22 @@ const Interesting = (props) => {
   const [interestData, setInterestData] = useState(null)
   const [isLoadingRefesh, setLoadingRefresh] = useState(false)
 
-  const getInteresting = async () => {
+  const getInteresting = async (url) => {
+    console.log(`url => ${url}`)
+    let link = url;
+    if (url === null) {
+      link = route('interesting.get');
+    }
     setLoadingRefresh(true)
     setInterestData(null)
-    const data = await axios.get(linkGet);
-    const obj = await data.data;
-    setInterestData(obj);
+    const data = await axios.get(link)
+    const obj = await data.data
+    setInterestData(obj)
     setLoadingRefresh(false)
   }
 
-  const onNextPage = (i) => {
-    console.dir(i)
-    // setLinkGet(i)
-    // getInteresting();
-  }
-
   useEffect(() => {
-    getInteresting()
+    getInteresting(route('interesting.get'))
   }, [])
 
   return (
@@ -50,7 +49,7 @@ const Interesting = (props) => {
             <div className="mt-6 lg:mt-0">
               <RefreshAndBack
                 isLoadingRefesh={isLoadingRefesh}
-                reloadData={getInteresting}
+                reloadData={() => getInteresting(null)}
               />
             </div>
           </div>
@@ -58,7 +57,12 @@ const Interesting = (props) => {
           <div className="container mx-auto">
             <div className="w-full rounded">
               {!interestData && <Skeletons />}
-              {interestData && <InterestingTableView interesting={interestData} clickNextPage={onNextPage} />}
+              {interestData && (
+                <InterestingTableView
+                  interesting={interestData}
+                  clickNextPage={(url) => getInteresting(url)}
+                />
+              )}
             </div>
           </div>
         </div>

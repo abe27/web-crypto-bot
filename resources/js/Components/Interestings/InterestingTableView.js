@@ -13,18 +13,22 @@ import {
   Center,
   Square,
 } from '@chakra-ui/react'
-import { ButtonIconReload, Pagination } from '@/Components'
+import { ButtonIconReload } from '@/Components'
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
 const capitalize = (s) => s[0].toUpperCase() + s.slice(1).toLowerCase()
 
 const classNames = (...classes) => classes.filter(Boolean).join(' ')
 
-const ShowBtnPaginations = (i, x) => {
+const ButtonPagination = ({ i, handleClick }) => {
+  // console.log(`url => ${i.url}`)
   if (i.url) {
     if (i.label === 'Next &raquo;') {
       return (
-        <button key={x} className="btn btn-sm">
+        <button
+          className="btn btn-sm"
+          onClick={() => handleClick(i.url)}
+        >
           <ArrowRightIcon />
         </button>
       )
@@ -32,27 +36,40 @@ const ShowBtnPaginations = (i, x) => {
 
     if (i.label === '&laquo; Previous') {
       return (
-        <button key={x} className="btn btn-sm">
+        <button
+          className="btn btn-sm"
+          onClick={() => handleClick(i.url)}
+        >
           <ArrowLeftIcon />
         </button>
       )
     }
+
     return (
       <button
-        key={x}
+        onClick={() => handleClick(i.url)}
         className={classNames(i.active ? 'btn-disabled' : '', 'btn btn-sm')}
       >
         {i.label}
       </button>
     )
   }
-
-  return
+  return <></>
 }
 
-const TableView = ({ interesting, clickNextPage = false }) => {
-  console.dir(interesting)
+const Pagination = ({ data, handleClick }) => {
+  if (data) {
+    return data.map(i => <ButtonPagination key={i.label} i={i} handleClick={handleClick} />)
+  }
+
+  return <></>
+}
+
+
+const TableView = ({ interesting, clickNextPage }) => {
+  // console.dir(interesting.meta)
   const handleClick = (e) => console.dir(e)
+  const pageTo = (e) => clickNextPage(e)
   return (
     <>
       {interesting.data && (
@@ -132,13 +149,13 @@ const TableView = ({ interesting, clickNextPage = false }) => {
         </Table>
       )}
 
-      {interesting.meta.last_page != interesting.meta.current_page && (
+      {interesting.meta && (
         <div className="flex max-w-7xl mx-auto p-6 justify-center">
           <div className="btn-group">
             {interesting.meta.links && (
               <Pagination
                 data={interesting.meta.links}
-                handleClick={clickNextPage}
+                handleClick={pageTo}
               />
             )}
           </div>

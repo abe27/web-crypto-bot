@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import { RepeatIcon } from '@chakra-ui/icons'
 
-const RefreshAndBack = ({ isLoadingRefesh = false, reloadData = false }) => {
+const RefreshAndBack = ({ isLoadingRefesh = false, reloadData }) => {
   return (
     <>
       <a

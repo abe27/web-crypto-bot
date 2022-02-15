@@ -7,7 +7,6 @@ import RefreshAndBack from './RefreshAndBack'
 import HeaderBreadcrumbs from './HeaderBreadcrumbs'
 import ButtonIconHandles from './ButtonIconHandles'
 import AlertDialogComfirm from './AlertDialogComfirm'
-import Pagination from './Pagination'
 
 export {
   AlertDialogComfirm,
@@ -19,5 +18,4 @@ export {
   Skeletons,
   ValidationErrors,
   HeaderBreadcrumbs,
-  Pagination,
 }
