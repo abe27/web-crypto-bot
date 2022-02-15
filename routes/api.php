@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthorizationController;
 use App\Http\Controllers\Api\ApiExchangeBaseController;
 use App\Http\Controllers\Api\InterestingBaseController;
+use App\Http\Controllers\Api\OrderBaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,5 +83,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('/order')->group(function () {
         Route::get('/get', [OrderBaseController::class, 'index'])->name('api.order.index');
+        Route::post('/create', [OrderBaseController::class, 'store'])->name('api.order.create');
     });
 });

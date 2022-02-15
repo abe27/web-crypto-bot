@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Helpers\LogActivity;
+use App\Models\Order;
+use App\Http\Controllers\Api\BaseApiController;
+use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Resources\Api\OrderResource;
 
-class OrderBaseController extends Controller
+class OrderBaseController extends BaseApiController
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +18,12 @@ class OrderBaseController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        LogActivity::addToLog('Api โหลดข้อมูล Order');
+        $data = Order::where('status', 'Open')->get();
+        return $this->sendResponse(
+            OrderResource::collection($data),
+            'Api Data By user fetched.'
+        );
     }
 
     /**
@@ -33,9 +32,24 @@ class OrderBaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        //
+        // 'user_id' => 'required|uuid',
+        // 'interest_id' => 'required',
+        // 'order_type_id' => 'required',
+        // 'orderno' => 'required|unique:orders',
+        // 'at_price' => 'required|numeric',
+        // 'total_coin' => 'required|numeric',
+        // 'type' => 'required',
+        // 'is_active' => 'required',
+        // LogActivity::addToLog('Api บันทึกข้อมูล Order');
+        // $data = Order::where('status', 'Open')->get();
+        // return $this->sendResponse(
+        //     OrderResource::collection($request),
+        //     'Api Data By user fetched.'
+        // );
+        $valid = $request->validated();
+        return $valid;
     }
 
     /**
@@ -44,7 +58,7 @@ class OrderBaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
         //
     }
@@ -55,7 +69,7 @@ class OrderBaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
         //
     }
@@ -67,7 +81,7 @@ class OrderBaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         //
     }
@@ -78,7 +92,7 @@ class OrderBaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
         //
     }

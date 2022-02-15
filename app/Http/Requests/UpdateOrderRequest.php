@@ -13,7 +13,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'interest_id' => 'required',
+            'order_type_id' => 'required',
+            'type' => 'required',
+            'is_active' => 'required',
         ];
     }
 }

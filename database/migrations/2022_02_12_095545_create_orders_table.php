@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('interest_id', 21)->nullable();
             $table->string('order_type_id', 21)->nullable();
             $table->string('orderno')->unique();
-            $table->decimal('at_price', 10, 8)->nullable()->default(0.00000000);
-            $table->decimal('total_coin', 10, 8)->nullable()->default(0.00000000);
+            $table->decimal('at_price', 65, 2)->nullable()->default(0.00000000);
+            $table->decimal('total_coin', 65, 2)->nullable()->default(0.00000000);
+            $table->enum('type', ['Auto', 'Manual'])->nullable()->default('Auto');
             $table->enum('status', ['-', 'Close', 'Hold', 'Open', 'Cancel'])->nullable()->default('-');
             $table->boolean('is_checked')->nullable()->default(false);
             $table->timestamps();

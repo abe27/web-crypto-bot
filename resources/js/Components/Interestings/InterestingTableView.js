@@ -14,8 +14,8 @@ import {
   Square,
   Tag,
 } from '@chakra-ui/react'
-import { ButtonIconReload } from '@/Components'
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+import { ButtonIconHandles } from '@/Components'
+import { ArrowLeftIcon, ArrowRightIcon, SmallAddIcon } from '@chakra-ui/icons'
 
 const capitalize = (s) => s[0].toUpperCase() + s.slice(1).toLowerCase()
 
@@ -30,8 +30,7 @@ const checkBullOrBear = (str) => {
         {str}
       </Tag>
     )
-  }
-  else if (str === 'LONG') {
+  } else if (str === 'LONG') {
     return (
       <Tag size="sm" colorScheme="blue" variant="solid">
         {str}
@@ -149,7 +148,10 @@ const TableView = ({ interesting, clickNextPage }) => {
                 <Td>{checkBullOrBear(i.trend)}</Td>
                 <Td>{i.updated_at}</Td>
                 <Td>
-                  <ButtonIconReload handleClick={handleClick} />
+                  <ButtonIconHandles
+                    icon={<SmallAddIcon />}
+                    handleClick={handleClick}
+                  />
                 </Td>
               </Tr>
             ))}
