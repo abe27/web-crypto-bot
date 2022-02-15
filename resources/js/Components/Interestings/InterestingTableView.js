@@ -31,6 +31,13 @@ const checkBullOrBear = (str) => {
       </Tag>
     )
   }
+  else if (str === 'LONG') {
+    return (
+      <Tag size="sm" colorScheme="blue" variant="solid">
+        {str}
+      </Tag>
+    )
+  }
 
   return (
     <Tag size="sm" colorScheme="red">
